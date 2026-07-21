@@ -1,7 +1,7 @@
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-TOKEN = "8771022249:AAHF3MQkMrwRZOMe545Mq8xcwggk087Mw1s"
+TOKEN = "YOUR_BOT_TOKEN"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
@@ -14,12 +14,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "👋 Welcome to WinPay!\n\n"
         "💰 Offline UPI Deposit Available\n"
         "🎁 Exclusive Bonus\n"
-        "🛡️ Safe & Secure\n"
+        "🛡 Safe & Secure\n"
         "⚡ Fast Approval",
-        reply_markup=ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+        reply_markup=ReplyKeyboardMarkup(
+            keyboard,
+            resize_keyboard=True
+        )
     )
 
-app = Application.builder().token(TOKEN).build()
-app.add_handler(CommandHandler("start", start))
-
-app.run_polling()
+if __name__ == "__main__":
+    app = Application.builder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.run_polling()
